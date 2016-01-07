@@ -8,12 +8,18 @@
 
 import UIKit
 import Alamofire
+import Charts
+import Parse
+
 
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var gameScore = PFObject(className: "GameScore")
+        
+        
         
     }
 

@@ -85,7 +85,13 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Carrot/Alamofire.framework"
+  install_framework "Pods-Carrot/Bolts.framework"
+  install_framework "Pods-Carrot/Charts.framework"
+  install_framework "Pods-Carrot/Parse.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Carrot/Alamofire.framework"
+  install_framework "Pods-Carrot/Bolts.framework"
+  install_framework "Pods-Carrot/Charts.framework"
+  install_framework "Pods-Carrot/Parse.framework"
 fi
