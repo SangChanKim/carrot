@@ -1,5 +1,5 @@
 //
-//  ViewCntrler.swift
+//  MainViewController.swift
 //  Carrot
 //
 //  Created by Kevin Kim on 1/7/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ViewCntrler: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,11 +24,14 @@ class ViewCntrler: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 6
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("transactionCell", forIndexPath: indexPath) as! TransactionTableViewCell
+        
+        
+        
         return cell
     }
     
