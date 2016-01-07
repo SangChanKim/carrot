@@ -313,13 +313,13 @@
                     <navigationItem key="navigationItem" title="Login" id="MjQ-cu-OD6">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="UYY-pI-jsq">
                             <connections>
-                                <segue destination="rFy-aC-bgL" kind="show" identifier="showSetup" id="pGa-M1-FWK"/>
+                                <segue destination="rFy-aC-bgL" kind="presentation" identifier="showSetup" id="pGa-M1-FWK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="showMain2" id="y4f-Si-S7C"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="showMain2" id="y4f-Si-S7C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PA4-Xr-wGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
