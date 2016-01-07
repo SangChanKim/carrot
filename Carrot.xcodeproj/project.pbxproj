@@ -41,7 +41,6 @@
 		FA94B51C1C3EEFBE009D25AD /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		FA94B51E1C3F09BC009D25AD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA94B5201C3F09D0009D25AD /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
-		FA94B52E1C3F1D13009D25AD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				FA94B5201C3F09D0009D25AD /* SignUpController.swift */,
-				FA94B52E1C3F1D13009D25AD /* ViewController.swift */,
 				FA94B51E1C3F09BC009D25AD /* LoginViewController.swift */,
 				FA94B5101C3EC28E009D25AD /* SetupViewController.swift */,
 				FA94B5121C3ECF2C009D25AD /* TransactionTableViewCell.swift */,
@@ -271,7 +269,6 @@
 				82B3C6661C3EFA9E00DF8585 /* LoginViewController.swift in Sources */,
 				FA94B5111C3EC28E009D25AD /* SetupViewController.swift in Sources */,
 				FA94B5131C3ECF2C009D25AD /* TransactionTableViewCell.swift in Sources */,
-				FA94B52F1C3F1D13009D25AD /* ViewController.swift in Sources */,
 				82B3C6681C3EFD0E00DF8585 /* SignUpController.swift in Sources */,
 				FA94B50B1C3EC246009D25AD /* ViewController.swift in Sources */,
 				FA94B5171C3EEC5F009D25AD /* MainViewContoller.swift in Sources */,
