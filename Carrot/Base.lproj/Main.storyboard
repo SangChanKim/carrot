@@ -18,6 +18,15 @@
                     <view key="view" contentMode="scaleToFill" id="HVY-Xr-ARF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJh-Vx-5rD">
+                                <rect key="frame" x="178" y="402" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showMain" id="pfg-Wm-Tsn"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Setup" id="Loz-Cz-KZV">
@@ -304,7 +313,7 @@
                     <navigationItem key="navigationItem" title="Login" id="MjQ-cu-OD6">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="UYY-pI-jsq">
                             <connections>
-                                <segue destination="rFy-aC-bgL" kind="show" id="pGa-M1-FWK"/>
+                                <segue destination="rFy-aC-bgL" kind="show" identifier="showSetup" id="pGa-M1-FWK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -338,4 +347,7 @@
         <image name="carrot_savings" width="792" height="792"/>
         <image name="settings_icon" width="428" height="417"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pfg-Wm-Tsn"/>
+    </inferredMetricsTieBreakers>
 </document>

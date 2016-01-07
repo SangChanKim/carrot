@@ -5,6 +5,9 @@
       location = "group:Carrot.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:ViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
