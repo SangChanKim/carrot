@@ -1,47 +1,46 @@
-////
-////  LoginViewController.swift
-////  Carrot
-////
-////  Created by Kevin Kim on 1/7/16.
-////  Copyright © 2016 Kevin Kim. All rights reserved.
-////
-//
-//import UIKit
-//import Parse
-//
-//class LoginViewController: UIViewController, PFLogInViewControllerDelegate {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//    }
-//    
-//    override func viewDidAppear(animated: Bool) {
-//        if (PFUser.currentUser() == nil) {
-//            let loginViewController = PFLogInViewController()
-//            loginViewController.delegate = self
-//            self.presentViewController(loginViewController, animated: false, completion: nil)
-//        }
-//    }
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-//    
-//
-//    func logInViewController(controller: PFLogInViewController, didLogInUser user: PFUser!) -> Void {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//    }
-//
-//    
-//    /*
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//    }
-//    */
-//
-//}
+import UIKit
+import Parse
+import ParseUI
+
+class LoginViewController : PFLogInViewController {
+    
+    //var backgroundImage : UIImageView!;
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        
+        let logo = UILabel()
+        logo.text = "CARROT"
+        logo.textColor = UIColor.orangeColor()
+        logo.font = UIFont(name: "", size: 200)
+        //logo.shadowColor = UIColor.lightGrayColor()
+        //logo.shadowOffset = CGSizeMake(2, 2)
+        logInView?.logo = logo
+        
+        let imageView = UIImageView(frame: CGRect(x: 140, y: 75, width: 100, height: 100))
+        let carrotImage = UIImage(named: "Carrot_Logo")
+        imageView.image = carrotImage
+        
+        self.view.addSubview(imageView)
+        
+        self.logInView?.usernameField!.text = "rickrickrick@gmail.com"
+        self.logInView?.passwordField!.text = "what"
+        
+        
+        
+        // set our custom background image
+        //backgroundImage = UIImageView(image: UIImage(named: "welcome_bg"))
+        //backgroundImage.contentMode = UIViewContentMode.ScaleAspectFill
+        //self.logInView!.insertSubview(backgroundImage, atIndex: 0)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // stretch background image to fill screen
+        //backgroundImage.frame = CGRectMake( 0,  0,  self.logInView!.frame.width,  self.logInView!.frame.height)
+    }
+    
+}
