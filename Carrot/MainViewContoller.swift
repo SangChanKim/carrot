@@ -7,11 +7,18 @@
 //
 
 import Foundation
+import CircleProgressView
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var totalSavedLabel: UILabel!
+    @IBOutlet weak var totalSpentLabel: UILabel!
+    @IBOutlet weak var dateSegment: UISegmentedControl!
+    @IBOutlet weak var carrotProgressView: CircleProgressView!
+    @IBOutlet weak var megaProgressView: CircleProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

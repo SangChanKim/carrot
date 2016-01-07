@@ -236,7 +236,7 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RECENT TRANSACTIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyE-4v-pzp">
-                                <rect key="frame" x="7" y="285" width="138" height="15"/>
+                                <rect key="frame" x="11" y="285" width="138" height="15"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -247,12 +247,18 @@
                     <navigationItem key="navigationItem" title="Main" id="wMr-Oy-srv"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="carrotProgressView" destination="jPa-m2-0vs" id="TwZ-hR-haR"/>
+                        <outlet property="dateSegment" destination="z6h-qn-9Jy" id="hei-ZC-4V6"/>
+                        <outlet property="megaProgressView" destination="hr8-yc-d1j" id="3Aq-zL-z1V"/>
                         <outlet property="tableView" destination="QNR-r0-u4t" id="8cE-Jr-QNk"/>
+                        <outlet property="totalSavedLabel" destination="AZr-Q9-tGf" id="TXu-SR-j0J"/>
+                        <outlet property="totalSpentLabel" destination="1fV-sw-zwC" id="spQ-JI-kOQ"/>
+                        <outlet property="usernameLabel" destination="zKS-6H-BN8" id="heF-kb-erH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713.5" y="-418.5"/>
+            <point key="canvasLocation" x="1707.5" y="-395.5"/>
         </scene>
         <!--Login-->
         <scene sceneID="wPK-3v-CCj">
