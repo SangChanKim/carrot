@@ -5,8 +5,8 @@ use_frameworks!
 
 target 'Carrot' do
     pod 'Alamofire', '~> 3.0'
-    pod 'Charts'
     pod 'Parse'
+    pod 'ParseUI'
     pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git'
 end
 
