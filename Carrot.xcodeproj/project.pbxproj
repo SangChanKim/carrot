@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		63C374513BAC22CF1AB77017 /* Pods_Carrot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41B8501AC87D0190801AC8C9 /* Pods_Carrot.framework */; };
 		FA0055CA1C3EB14F0008B7C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0055C91C3EB14F0008B7C1 /* AppDelegate.swift */; };
-		FA0055CC1C3EB14F0008B7C1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0055CB1C3EB14F0008B7C1 /* MainViewController.swift */; };
 		FA0055CF1C3EB14F0008B7C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0055CD1C3EB14F0008B7C1 /* Main.storyboard */; };
 		FA0055D11C3EB14F0008B7C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA0055D01C3EB14F0008B7C1 /* Assets.xcassets */; };
 		FA0055D41C3EB14F0008B7C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0055D21C3EB14F0008B7C1 /* LaunchScreen.storyboard */; };
 		FA94B50B1C3EC246009D25AD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94B50A1C3EC246009D25AD /* LoginViewController.swift */; };
 		FA94B5111C3EC28E009D25AD /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94B5101C3EC28E009D25AD /* SetupViewController.swift */; };
+		FA94B5131C3ECF2C009D25AD /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94B5121C3ECF2C009D25AD /* TransactionTableViewCell.swift */; };
+		FA94B5171C3EEC5F009D25AD /* MainViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94B5161C3EEC5F009D25AD /* MainViewContoller.swift */; };
+		FA94B51D1C3EEFBE009D25AD /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94B51C1C3EEFBE009D25AD /* TestTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,13 +26,15 @@
 		9E2D77999A994F036F351873 /* Pods-Carrot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carrot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Carrot/Pods-Carrot.release.xcconfig"; sourceTree = "<group>"; };
 		FA0055C61C3EB14F0008B7C1 /* Carrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0055C91C3EB14F0008B7C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA0055CB1C3EB14F0008B7C1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FA0055CE1C3EB14F0008B7C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA0055D01C3EB14F0008B7C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA0055D31C3EB14F0008B7C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA0055D51C3EB14F0008B7C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA94B50A1C3EC246009D25AD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA94B5101C3EC28E009D25AD /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		FA94B5121C3ECF2C009D25AD /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		FA94B5161C3EEC5F009D25AD /* MainViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewContoller.swift; sourceTree = "<group>"; };
+		FA94B51C1C3EEFBE009D25AD /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +117,9 @@
 			children = (
 				FA94B50A1C3EC246009D25AD /* LoginViewController.swift */,
 				FA94B5101C3EC28E009D25AD /* SetupViewController.swift */,
-				FA0055CB1C3EB14F0008B7C1 /* MainViewController.swift */,
+				FA94B5121C3ECF2C009D25AD /* TransactionTableViewCell.swift */,
+				FA94B5161C3EEC5F009D25AD /* MainViewContoller.swift */,
+				FA94B51C1C3EEFBE009D25AD /* TestTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -252,9 +258,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA94B5111C3EC28E009D25AD /* SetupViewController.swift in Sources */,
+				FA94B5131C3ECF2C009D25AD /* TransactionTableViewCell.swift in Sources */,
 				FA94B50B1C3EC246009D25AD /* LoginViewController.swift in Sources */,
-				FA0055CC1C3EB14F0008B7C1 /* MainViewController.swift in Sources */,
+				FA94B5171C3EEC5F009D25AD /* MainViewContoller.swift in Sources */,
 				FA0055CA1C3EB14F0008B7C1 /* AppDelegate.swift in Sources */,
+				FA94B51D1C3EEFBE009D25AD /* TestTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

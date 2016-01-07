@@ -2,18 +2,30 @@ PODS:
   - Alamofire (3.1.4)
   - Bolts/Tasks (1.5.1)
   - Charts (2.1.6)
+  - CircleProgressView (1.0.9)
   - Parse (1.11.0):
     - Bolts/Tasks (~> 1.5)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - Charts
+  - CircleProgressView (from `https://github.com/CardinalNow/iOS-CircleProgressView.git`)
   - Parse
+
+EXTERNAL SOURCES:
+  CircleProgressView:
+    :git: https://github.com/CardinalNow/iOS-CircleProgressView.git
+
+CHECKOUT OPTIONS:
+  CircleProgressView:
+    :commit: 81e0717ea1aa5d0b3df13632341c68c11c057f0c
+    :git: https://github.com/CardinalNow/iOS-CircleProgressView.git
 
 SPEC CHECKSUMS:
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
   Bolts: a12663244b1d3351c738882e71902fc74db54f64
   Charts: 5e1e5ac23898e5b09d226a2fc3e9d86bc281937e
+  CircleProgressView: fb5cd84be2abd908459d8dd087d94c4bdb7e60cf
   Parse: 886af46a0a677402f6374bb97ac212e795f70afe
 
 COCOAPODS: 0.39.0
