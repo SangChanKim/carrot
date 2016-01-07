@@ -25,10 +25,8 @@ class LoginViewController : PFLogInViewController {
         imageView.image = carrotImage
         
         self.view.addSubview(imageView)
-        
         self.logInView?.usernameField!.text = "rickrickrick@gmail.com"
         self.logInView?.passwordField!.text = "what"
-        
         
         
         // set our custom background image
