@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Setup-->
+        <scene sceneID="9CO-g2-bwr">
+            <objects>
+                <viewController id="rFy-aC-bgL" customClass="SetupViewController" customModule="Carrot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vy7-v1-e6A"/>
+                        <viewControllerLayoutGuide type="bottom" id="e3c-ar-w2n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HVY-Xr-ARF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Setup" id="Loz-Cz-KZV">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="F7z-tN-LbK">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="xyi-Jd-N3y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgW-2i-NOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="-418"/>
+        </scene>
+        <!--Welcome!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Carrot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Carrot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,9 +43,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Welcome!" id="wMr-Oy-srv">
+                        <barButtonItem key="rightBarButtonItem" image="settings_icon" id="AYN-MG-DaA"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1714" y="-418"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="wPK-3v-CCj">
+            <objects>
+                <viewController id="ETR-wq-PPb" customClass="LoginViewController" customModule="Carrot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oMe-rq-kEy"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mda-Xp-f3a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7sL-Ei-LNz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Login" id="MjQ-cu-OD6">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="UYY-pI-jsq">
+                            <connections>
+                                <segue destination="rFy-aC-bgL" kind="show" id="pGa-M1-FWK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PA4-Xr-wGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="362" y="-418"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Lnd-WG-ycB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VzF-5S-RHw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9ZO-VZ-A7M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ETR-wq-PPb" kind="relationship" relationship="rootViewController" id="Whe-5O-gTH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dWH-HR-3an" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-450" y="-418"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settings_icon" width="24" height="24"/>
+    </resources>
 </document>

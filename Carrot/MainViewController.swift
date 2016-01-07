@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Carrot
 //
 //  Created by Kevin Kim on 1/7/16.
@@ -13,12 +13,10 @@ import Parse
 
 
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var gameScore = PFObject(className: "GameScore")
-        
         
         
     }
