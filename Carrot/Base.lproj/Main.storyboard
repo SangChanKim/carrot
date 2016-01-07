@@ -40,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgW-2i-NOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="-418"/>
+            <point key="canvasLocation" x="1039.5" y="-418.5"/>
         </scene>
         <!--Main-->
         <scene sceneID="tne-QT-ifu">
@@ -318,6 +318,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showMain2" id="y4f-Si-S7C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PA4-Xr-wGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -348,6 +351,6 @@
         <image name="settings_icon" width="428" height="417"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pfg-Wm-Tsn"/>
+        <segue reference="y4f-Si-S7C"/>
     </inferredMetricsTieBreakers>
 </document>

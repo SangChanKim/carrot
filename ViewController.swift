@@ -27,11 +27,12 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
         self.dismissViewControllerAnimated(true, completion: nil)
         print("Logged in")
-        self.performSegueWithIdentifier("showSetup", sender: self)
+        self.performSegueWithIdentifier("showMain2", sender: self)
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
         self.dismissViewControllerAnimated(true, completion: nil)
+        self.performSegueWithIdentifier("showSetup", sender: self)
         //presentLoggedInAlert()
     }
     
