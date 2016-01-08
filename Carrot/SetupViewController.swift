@@ -9,8 +9,11 @@
 import UIKit
 import Parse
 
-class SetupViewController: UIViewController {
+class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var items : Item = Item()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,19 +35,19 @@ class SetupViewController: UIViewController {
                 PFCloud.callFunctionInBackground("processPurchases", withParameters: ["object_id" : currentUserID!]) { (returnData: AnyObject?, error: NSError?) -> Void in
                     if (error == nil) {
                         if let data = returnData {
-                            print("data = \(data)")
-                            
+                            self.items = Item()
                             let results = self.convertStringToDictionary(data as! String)
                             
-                            
-                            var items : [Item] = []
-                            
                             for (key,value) in results! {
-                                var newItem = Item()
-                                newItem.itemName = key
-                                newItem.price = value as! Double
-                                items.append(newItem)
+                                var item_name: String = key
+                                item_name = item_name.capitalizedString
+                                let item_price: Double = value as! Double
+                                
+                                self.items.itemName.append(item_name)
+                                self.items.price.append(item_price)
                             }
+                            
+                            self.tableView.reloadData()
                             
                         }
                     } else {
@@ -89,10 +92,27 @@ class SetupViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.itemName.count
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("topThreeCell", forIndexPath: indexPath)
+        cell.textLabel!.text = items.itemName[indexPath.row]
+        cell.detailTextLabel!.text = "$\(items.price[indexPath.row])"
+        return cell
+    }
+
+    
 
 }
 
 struct Item {
-    var itemName = ""
-    var price: Double = 0.0
+    var itemName: [String] = []
+    var price: [Double] = []
 }
