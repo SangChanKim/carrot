@@ -20,10 +20,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var carrotProgressView: CircleProgressView!
     @IBOutlet weak var megaProgressView: CircleProgressView!
     
+    @IBOutlet weak var megaTotalLabel: UILabel!
+    @IBOutlet weak var megaNameLabel: UILabel!
+    @IBOutlet weak var carrotTotalLabel: UILabel!
+    @IBOutlet weak var carrotNameLabel: UILabel!
     var transcationData: Data = Data()
     var username: String = ""
     var carrotName: String = ""
-    var carrotPrice: Double = 0.0
+    var carrotPrice: Double = 1.0
+    var goalName: String = ""
+    var goalPrice: Double = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +46,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         usernameLabel.adjustsFontSizeToFitWidth = true
         
         usernameLabel.text = username
+        carrotNameLabel.text = carrotName
+        megaNameLabel.text = goalName
         
         refreshData()
         
@@ -96,8 +104,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Progress View
     
-    private func getPercentage(amount: Double, total: Double) {
-        
+    private func getPercentage(amount: Double, total: Double) -> Double {
+        let x:Double = amount/total
+        let numberOfPlaces:Double = 2.0
+        let powerOfTen:Double = pow(10.0, numberOfPlaces)
+        let ret = round((x % 1.0) * powerOfTen) / powerOfTen
+        return ret
     }
     
     // MARK: - Network
@@ -144,13 +156,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if let data = returnData {
                     let results = Utilities.convertStringToDictionary(data as! String)
                     let spent = results!["total_spending"] as! Double
-                    let saved = results!["total_change"] as! Double
+                    let saved = (results!["total_change"] as! Double)/100
                     
                     self.totalSpentLabel.text = "$\(Utilities.getCurrencyValue(spent))"
                     self.totalSavedLabel.text = "$\(Utilities.getCurrencyValue(saved))"
                     
-                    let carrotPercentage = saved/self.carrotPrice
-                    let megaPercentage = saved/100
+                    self.carrotTotalLabel.text = "\(Utilities.getCurrencyValue(saved/self.carrotPrice))"
+                    self.megaTotalLabel.text = "\(Utilities.getCurrencyValue(saved/self.goalPrice))"
+                    
+                    let carrotPercentage = self.getPercentage(saved, total: self.carrotPrice)
+                    let megaPercentage = self.getPercentage(saved, total: self.goalPrice)
                     self.carrotProgressView.setProgress(carrotPercentage, animated: true)
                     self.megaProgressView.setProgress(megaPercentage, animated: true)
                 }
