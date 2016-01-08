@@ -13,6 +13,15 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
+<<<<<<< HEAD
+    @IBOutlet weak var carrotView: UIView!
+    @IBOutlet weak var sliderView: UIView!
+    @IBOutlet weak var priceSlider: UISlider!
+    @IBOutlet weak var currentPrice: UILabel!
+    @IBOutlet weak var maxPrice: UILabel!
+    
+=======
+>>>>>>> 5080c47bf489ee92749d68c3bff0e496cbff1543
     var items : Item = Item()
     var index: Int = 4
     
@@ -88,9 +97,24 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCellWithIdentifier("topThreeCell", forIndexPath: indexPath) as! topThreeTableViewCell
         cell.descripLabel.text = items.itemName[indexPath.row]
         cell.priceLabel.text = Utilities.getCurrencyValue(items.price[indexPath.row])
+        cell.priceButton.tag = indexPath.row
         return cell
     }
+
+    @IBAction func priceChangePushed(sender: UIButton) {
+        sliderView.hidden = false
+        carrotView.hidden = true
+        
+        let index = sender.tag
+        sliderView.backgroundColor = UIColor.orangeColor()
+    }
     
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        let currentValue = Int(sender.value)
+        
+        currentPrice.text = "\(currentValue)"
+    }
+
     @IBAction func seeProfilePushed(sender: UIButton) {
         if let indexPath = tableView.indexPathForSelectedRow {
             index = indexPath.row
