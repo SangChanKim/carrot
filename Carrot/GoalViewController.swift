@@ -16,6 +16,8 @@ class GoalViewController: UIViewController {
     
     var carrotName: String = ""
     var carrotPrice: Double = 1.0
+    var goalName: String = ""
+    var goalPrice: Double = 1.0
     var user_name: String = ""
     
     override func viewDidLoad() {
@@ -23,6 +25,9 @@ class GoalViewController: UIViewController {
         
         nameTextField.adjustsFontSizeToFitWidth = true
         priceTextField.adjustsFontSizeToFitWidth = true
+        
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter Goal Name Here", attributes: [NSForegroundColorAttributeName: UIColor.orangeColor()])
+        priceTextField.attributedPlaceholder = NSAttributedString(string: "$", attributes: [NSForegroundColorAttributeName: UIColor.orangeColor()])
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,12 +43,12 @@ class GoalViewController: UIViewController {
     
     @IBAction func seeProfilePushed(sender: UIButton) {
         if (nameTextField.text != "" && priceTextField.text != "0") {
-            let goalName = nameTextField.text
-            let goalPrice = (priceTextField.text! as NSString).doubleValue
+            goalName = nameTextField.text!
+            goalPrice = (priceTextField.text! as NSString).doubleValue
             
-            PFUser.currentUser()?.setObject(goalName!, forKey: "goal_item")
+            PFUser.currentUser()?.setObject(goalName.lowercaseString, forKey: "goal_item")
             PFUser.currentUser()?.setObject(goalPrice, forKey: "goal_price")
-            PFUser.currentUser()?.setObject(carrotName, forKey: "carrot_item")
+            PFUser.currentUser()?.setObject(carrotName.lowercaseString, forKey: "carrot_item")
             PFUser.currentUser()?.setObject(carrotPrice, forKey: "carrot_price")
             
             getCustomerInfo()
@@ -76,10 +81,10 @@ class GoalViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "seeProfile") {
             let destVC = segue.destinationViewController as! MainViewController
-            destVC.goalName = PFUser.currentUser()!.objectForKey("goal_item") as! String
-            destVC.goalPrice = PFUser.currentUser()!.objectForKey("goal_price") as! Double
-            destVC.carrotName = PFUser.currentUser()!.objectForKey("carrot_item") as! String
-            destVC.carrotPrice = PFUser.currentUser()!.objectForKey("carrot_price") as! Double
+            destVC.goalName = goalName.lowercaseString
+            destVC.goalPrice = goalPrice
+            destVC.carrotName = carrotName.lowercaseString
+            destVC.carrotPrice = carrotPrice
             destVC.username = user_name
         }
     }

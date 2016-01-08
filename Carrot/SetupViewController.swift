@@ -101,6 +101,13 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
 
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! topThreeTableViewCell
+        cell.backgroundColor = UIColor(netHex: 0xF8f7F3)
+        return indexPath
+        
+    }
+    
     @IBAction func priceChangePushed(sender: UIButton) {
         sliderView.hidden = false
         carrotView.hidden = true
@@ -113,7 +120,6 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         currentPrice.text = "$\(Utilities.getCurrencyValue(items.price[tag]))"
         maxPrice.text = "$\(Utilities.getCurrencyValue(items.price[tag] * 2))" // double the price
-        
         
     }
     
