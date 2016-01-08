@@ -1,5 +1,5 @@
 # iOS Frontend for Carrot, a change-saving app
-2015 Capital One Software Engineering Summit
+2016 Capital One Software Engineering Summit
 
 ## Members
 * Anna Liu
