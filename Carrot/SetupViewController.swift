@@ -13,13 +13,18 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
+<<<<<<< HEAD
     @IBOutlet weak var carrotView: UIView!
     @IBOutlet weak var sliderView: UIView!
     @IBOutlet weak var priceSlider: UISlider!
     @IBOutlet weak var currentPrice: UILabel!
     @IBOutlet weak var maxPrice: UILabel!
     
+=======
+>>>>>>> 5080c47bf489ee92749d68c3bff0e496cbff1543
     var items : Item = Item()
+    var index: Int = 4
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +52,7 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
                             for (key,value) in results! {
                                 var item_name: String = key
                                 item_name = item_name.capitalizedString
-                                var item_price: Double = value as! Double
+                                let item_price: Double = value as! Double
                                 
                                 self.items.itemName.append(item_name)
                                 self.items.price.append(item_price)
@@ -78,16 +83,6 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
     // MARK: - Table View
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,7 +100,7 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.priceButton.tag = indexPath.row
         return cell
     }
-    
+
     @IBAction func priceChangePushed(sender: UIButton) {
         sliderView.hidden = false
         carrotView.hidden = true
@@ -119,7 +114,24 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         currentPrice.text = "\(currentValue)"
     }
+
+    @IBAction func seeProfilePushed(sender: UIButton) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            index = indexPath.row
+            performSegueWithIdentifier("seeProfile", sender: self)
+        }
+    }
     
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "seeProfile") {
+            let destVC = segue.destinationViewController as! MainViewController
+            destVC.carrotName = items.itemName[index]
+            destVC.carrotPrice = items.price[index]
+        }
+    }
     
 }
 
