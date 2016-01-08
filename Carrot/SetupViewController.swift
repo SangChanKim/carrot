@@ -13,6 +13,11 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var carrotView: UIView!
+    @IBOutlet weak var sliderView: UIView!
+    @IBOutlet weak var priceSlider: UISlider!
+    @IBOutlet weak var currentPrice: UILabel!
+    @IBOutlet weak var maxPrice: UILabel!
     
     var items : Item = Item()
     override func viewDidLoad() {
@@ -97,8 +102,24 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCellWithIdentifier("topThreeCell", forIndexPath: indexPath) as! topThreeTableViewCell
         cell.descripLabel.text = items.itemName[indexPath.row]
         cell.priceLabel.text = Utilities.getCurrencyValue(items.price[indexPath.row])
+        cell.priceButton.tag = indexPath.row
         return cell
     }
+    
+    @IBAction func priceChangePushed(sender: UIButton) {
+        sliderView.hidden = false
+        carrotView.hidden = true
+        
+        let index = sender.tag
+        sliderView.backgroundColor = UIColor.orangeColor()
+    }
+    
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        let currentValue = Int(sender.value)
+        
+        currentPrice.text = "\(currentValue)"
+    }
+    
     
 }
 
