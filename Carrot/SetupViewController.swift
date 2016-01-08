@@ -98,12 +98,16 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
 
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! topThreeTableViewCell
+        cell.backgroundColor = UIColor(netHex: 0xF8f7F3)
+        return indexPath
+        
+    }
+    
     @IBAction func priceChangePushed(sender: UIButton) {
         sliderView.hidden = false
         carrotView.hidden = true
-        
-        let index = sender.tag
-        sliderView.backgroundColor = UIColor.orangeColor()
     }
     
     @IBAction func sliderValueChanged(sender: UISlider) {
@@ -124,7 +128,7 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "makeGoal") {
-            let destVC = segue.destinationViewController as! MainViewController
+            let destVC = segue.destinationViewController as! GoalViewController
             destVC.carrotName = items.itemName[index]
             destVC.carrotPrice = items.price[index]
         }

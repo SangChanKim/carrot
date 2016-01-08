@@ -3,7 +3,7 @@ import Parse
 import ParseUI
 import LocalAuthentication
 
-class LoginViewController : PFLogInViewController {
+class LoginViewController : PFLogInViewController, PFSignUpViewControllerDelegate {
     
     //var backgroundImage : UIImageView!;
     
@@ -28,7 +28,14 @@ class LoginViewController : PFLogInViewController {
         self.view.addSubview(imageView)
         self.logInView?.usernameField!.text = "rickrickrick@gmail.com"
         self.logInView?.passwordField!.text = "what"
-  
+        
+        let logo2 = UILabel()
+        logo2.text = "CARROT"
+        logo2.textColor = UIColor.orangeColor()
+        logo2.font = UIFont(name: "HelveticaNeue-Light", size: 700)
+        self.signUpController?.signUpView?.logo = logo
+        self.signUpController?.signUpView?.backgroundColor = UIColor.whiteColor()
+        
         showTouchId()
     }
     
