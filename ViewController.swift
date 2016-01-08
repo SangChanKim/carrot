@@ -69,6 +69,10 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showMain2") {
             let destVC = segue.destinationViewController as! MainViewController
+            destVC.goalName = PFUser.currentUser()!.objectForKey("goal_item") as! String
+            destVC.goalPrice = PFUser.currentUser()!.objectForKey("goal_price") as! Double
+            destVC.carrotName = PFUser.currentUser()!.objectForKey("carrot_item") as! String
+            destVC.carrotPrice = PFUser.currentUser()!.objectForKey("carrot_price") as! Double
             destVC.username = user_name
         }
     }

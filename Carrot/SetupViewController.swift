@@ -12,16 +12,13 @@ import Parse
 class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    
-<<<<<<< HEAD
     @IBOutlet weak var carrotView: UIView!
     @IBOutlet weak var sliderView: UIView!
     @IBOutlet weak var priceSlider: UISlider!
     @IBOutlet weak var currentPrice: UILabel!
     @IBOutlet weak var maxPrice: UILabel!
     
-=======
->>>>>>> 5080c47bf489ee92749d68c3bff0e496cbff1543
+
     var items : Item = Item()
     var index: Int = 4
     
@@ -118,7 +115,7 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func seeProfilePushed(sender: UIButton) {
         if let indexPath = tableView.indexPathForSelectedRow {
             index = indexPath.row
-            performSegueWithIdentifier("seeProfile", sender: self)
+            performSegueWithIdentifier("makeGoal", sender: self)
         }
     }
     
@@ -126,7 +123,7 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "seeProfile") {
+        if (segue.identifier == "makeGoal") {
             let destVC = segue.destinationViewController as! MainViewController
             destVC.carrotName = items.itemName[index]
             destVC.carrotPrice = items.price[index]
