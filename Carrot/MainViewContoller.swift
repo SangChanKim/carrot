@@ -22,6 +22,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var transcationData: Data = Data()
     var username: String = ""
+    var carrotName: String = ""
+    var carrotPrice: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         usernameLabel.text = username
         
         refreshData()
+        
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -145,9 +149,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.totalSpentLabel.text = "$\(Utilities.getCurrencyValue(spent))"
                     self.totalSavedLabel.text = "$\(Utilities.getCurrencyValue(saved))"
                     
-                    let percentage = saved/100
-                    self.carrotProgressView.setProgress(percentage, animated: true)
-                    self.megaProgressView.setProgress(percentage, animated: true)
+                    let carrotPercentage = saved/self.carrotPrice
+                    let megaPercentage = saved/100
+                    self.carrotProgressView.setProgress(carrotPercentage, animated: true)
+                    self.megaProgressView.setProgress(megaPercentage, animated: true)
                 }
             } else {
                 print("Totals Error = \(error)")
