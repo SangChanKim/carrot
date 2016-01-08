@@ -62,7 +62,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.descripLabel.text = self.transcationData.descriptions[index]
         cell.priceLabel.text = "$\(Utilities.getCurrencyValue(self.transcationData.amounts[index]))"
         cell.savedLabel.text = "+$\(Utilities.getCurrencyValue(self.transcationData.change[index]))"
-        
+        cell.dayLabel.text = transcationData.days[index]
+        cell.monthLabel.text = transcationData.months[index]
         
         return cell
     }
@@ -108,13 +109,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                         var description = result["description"] as! String
                         description = description.capitalizedString
                         let date = result["purchase_date"] as! String
-                        print(self.getDayString(date))
+                        let day = self.getDayString(date)
+                        let month = self.getMonthString(date)
                         
                         
                         self.transcationData.amounts.append(purchase)
                         self.transcationData.change.append(change)
                         self.transcationData.descriptions.append(description)
-                        self.transcationData.dates.append(date)
+                        self.transcationData.days.append(day)
+                        self.transcationData.months.append(month)
                     }
                     
                     self.tableView.reloadData()
@@ -153,24 +156,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // time format is "2016-01-08"
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd"
-        let createdDate = dateFormatter.dateFromString(time)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let createdDate: NSDate? = dateFormatter.dateFromString(time)
         
-        let today = NSDate(timeIntervalSinceNow: 0)
-        let timeOffset = today.offsetFrom(createdDate!)
-        return timeOffset
+        let components = NSCalendar.currentCalendar().components(.Day, fromDate: createdDate!)
+        
+        let day = components.day
+        return "\(day)"
+        
     }
     
     func getMonthString(time: String) -> String {
         
-        // time format is "Sat Dec 26 21:11:35 +0000 2015"
+        // time format is "2016-01-08"
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
-        let createdDate = dateFormatter.dateFromString(time)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let createdDate: NSDate? = dateFormatter.dateFromString(time)
         
-        let today = NSDate(timeIntervalSinceNow: 0)
-        let timeOffset = today.offsetFrom(createdDate!)
-        return timeOffset
+        let components = NSCalendar.currentCalendar().components(.Month, fromDate: createdDate!)
+        
+        let month = components.month
+        return "\(month)"
     }
     
 }
@@ -180,6 +186,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 struct Data {
     var amounts: [Double] = []
     var change: [Double] = []
-    var dates: [String] = []
+    var days: [String] = []
+    var months: [String] = []
     var descriptions: [String] = []
 }
