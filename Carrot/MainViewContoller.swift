@@ -29,7 +29,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "didRefresh:", forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
+        
         tableView.allowsSelection = false
+        tableView.separatorColor = UIColor.orangeColor()
         
         totalSpentLabel.adjustsFontSizeToFitWidth = true
         totalSavedLabel.adjustsFontSizeToFitWidth = true
@@ -64,6 +66,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.savedLabel.text = "+$\(Utilities.getCurrencyValue(self.transcationData.change[index]))"
         cell.dayLabel.text = transcationData.days[index]
         cell.monthLabel.text = transcationData.months[index]
+        
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsetsZero
         
         return cell
     }
@@ -172,11 +178,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let createdDate: NSDate? = dateFormatter.dateFromString(time)
+
+        dateFormatter.dateFormat = "MMM"
+        let month = dateFormatter.stringFromDate(createdDate!).uppercaseString
         
-        let components = NSCalendar.currentCalendar().components(.Month, fromDate: createdDate!)
-        
-        let month = components.month
-        return "\(month)"
+        return month
     }
     
 }
