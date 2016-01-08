@@ -12,6 +12,7 @@ class topThreeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var descripLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
