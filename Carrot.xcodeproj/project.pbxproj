@@ -21,6 +21,7 @@
 		FA94B51D1C3EEFBE009D25AD /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94B51C1C3EEFBE009D25AD /* TestTableViewController.swift */; };
 		FA94B5331C3F3DAA009D25AD /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94B5321C3F3DAA009D25AD /* Utilities.swift */; };
 		FA94B5361C3F6741009D25AD /* topThreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94B5351C3F6741009D25AD /* topThreeTableViewCell.swift */; };
+		FA94B53D1C3F9882009D25AD /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94B53C1C3F9882009D25AD /* GoalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,9 +43,9 @@
 		FA94B5161C3EEC5F009D25AD /* MainViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewContoller.swift; sourceTree = "<group>"; };
 		FA94B51C1C3EEFBE009D25AD /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		FA94B51E1C3F09BC009D25AD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		FA94B5201C3F09D0009D25AD /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		FA94B5321C3F3DAA009D25AD /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FA94B5351C3F6741009D25AD /* topThreeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = topThreeTableViewCell.swift; sourceTree = "<group>"; };
+		FA94B53C1C3F9882009D25AD /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +127,9 @@
 		FA94B50E1C3EC257009D25AD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FA94B5201C3F09D0009D25AD /* SignUpController.swift */,
 				FA94B51E1C3F09BC009D25AD /* LoginViewController.swift */,
+				FA94B53C1C3F9882009D25AD /* GoalViewController.swift */,
+				82B3C6671C3EFD0E00DF8585 /* SignUpController.swift */,
 				FA94B5101C3EC28E009D25AD /* SetupViewController.swift */,
 				FA94B5121C3ECF2C009D25AD /* TransactionTableViewCell.swift */,
 				FA94B5161C3EEC5F009D25AD /* MainViewContoller.swift */,
@@ -280,6 +282,7 @@
 				FA94B50B1C3EC246009D25AD /* ViewController.swift in Sources */,
 				FA94B5171C3EEC5F009D25AD /* MainViewContoller.swift in Sources */,
 				FA94B5331C3F3DAA009D25AD /* Utilities.swift in Sources */,
+				FA94B53D1C3F9882009D25AD /* GoalViewController.swift in Sources */,
 				FA0055CA1C3EB14F0008B7C1 /* AppDelegate.swift in Sources */,
 				FA94B51D1C3EEFBE009D25AD /* TestTableViewController.swift in Sources */,
 			);
