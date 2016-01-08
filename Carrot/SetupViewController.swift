@@ -14,13 +14,16 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var carrotView: UIView!
     @IBOutlet weak var sliderView: UIView!
+
     @IBOutlet weak var priceSlider: UISlider!
+    
     @IBOutlet weak var currentPrice: UILabel!
     @IBOutlet weak var maxPrice: UILabel!
     
 
     var items : Item = Item()
-    var index: Int = 4
+    var index: Int = 0
+    var tag: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,12 +111,37 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func priceChangePushed(sender: UIButton) {
         sliderView.hidden = false
         carrotView.hidden = true
+        
+        self.tag = sender.tag
+        
+        priceSlider.maximumValue = Float(2.0 * items.price[tag])
+        priceSlider.minimumValue = 0.0
+        priceSlider.value = Float(items.price[tag])
+        
+        currentPrice.text = "$\(Utilities.getCurrencyValue(items.price[tag]))"
+        maxPrice.text = "$\(Utilities.getCurrencyValue(items.price[tag] * 2))" // double the price
+        
     }
     
-    @IBAction func sliderValueChanged(sender: UISlider) {
-        let currentValue = Int(sender.value)
+//    @IBAction func sliderValueChanged(sender: UISlider) {
+//        let currentValue = Int(sender.value)
+//        currentPrice.text = "\(currentValue)"
+//        
+//        let indexPath = NSIndexPath(forRow: tag, inSection: 1)
+//        let cell = tableView.cellForRowAtIndexPath(indexPath) as! topThreeTableViewCell
+//        cell.priceLabel.text = "$\(currentValue)"
+//        
+//        print(currentValue)
+//    }
+    @IBAction func changeValue(sender: UISlider) {
+                let currentValue = sender.value
+                currentPrice.text = "\(currentValue)"
         
-        currentPrice.text = "\(currentValue)"
+                //let indexPath = NSIndexPath(forRow: tag, inSection: 1)
+                //let cell = tableView.cellForRowAtIndexPath(indexPath) as! topThreeTableViewCell
+                //cell.priceLabel.text = "$\(currentValue)"
+                
+                print(currentValue)
     }
 
     @IBAction func seeProfilePushed(sender: UIButton) {
