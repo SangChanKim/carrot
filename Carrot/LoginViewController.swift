@@ -1,6 +1,7 @@
 import UIKit
 import Parse
 import ParseUI
+import LocalAuthentication
 
 class LoginViewController : PFLogInViewController {
     
@@ -27,12 +28,56 @@ class LoginViewController : PFLogInViewController {
         self.view.addSubview(imageView)
         self.logInView?.usernameField!.text = "rickrickrick@gmail.com"
         self.logInView?.passwordField!.text = "what"
+  
+        showTouchId()
+    }
+    
+    func showTouchId() {
+        // Get the local authentication context.
+        let context = LAContext()
         
+        // Declare a NSError variable.
+        var error: NSError?
         
-        // set our custom background image
-        //backgroundImage = UIImageView(image: UIImage(named: "welcome_bg"))
-        //backgroundImage.contentMode = UIViewContentMode.ScaleAspectFill
-        //self.logInView!.insertSubview(backgroundImage, atIndex: 0)
+        // Set the reason string that will appear on the authentication alert.
+        var reasonString = "Authentication is needed."
+        
+        // Check if the device can evaluate the policy.
+        if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &error) {
+            [context .evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString, reply: { (success: Bool, evalPolicyError: NSError?) -> Void in
+                
+                if success {
+                    
+                }
+                else{
+                    // If authentication failed then show a message to the console with a short description.
+                    // In case that the error is a user fallback, then show the password alert view.
+                    print(evalPolicyError?.localizedDescription)
+                    
+                    switch evalPolicyError!.code {
+                        
+                    case LAError.SystemCancel.rawValue:
+                        print("Authentication was cancelled by the system")
+                        
+                    case LAError.UserCancel.rawValue:
+                        print("Authentication was cancelled by the user")
+                        
+                    case LAError.UserFallback.rawValue:
+                        print("User selected to enter custom password")
+                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                            //self.showPasswordAlert()
+                        })
+                        
+                    default:
+                        print("Authentication failed")
+                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                            //self.showPasswordAlert()
+                        })
+                    }
+                }
+                
+            })]
+        }
     }
     
     override func viewDidLayoutSubviews() {

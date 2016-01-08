@@ -5,6 +5,8 @@ import ParseUI
 
 class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     
+    var user_name: String = ""
+    
     override func viewDidLoad() {
         print("didLoad\n")
         super.viewDidLoad()
@@ -27,7 +29,9 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
         self.dismissViewControllerAnimated(true, completion: nil)
         print("Logged in")
-        self.performSegueWithIdentifier("showMain2", sender: self)
+        
+        getCustomerInfo()
+        
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
@@ -43,6 +47,30 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         }
         alertController.addAction(OKAction)
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func getCustomerInfo() {
+        PFCloud.callFunctionInBackground("getCustomerFromObjectId", withParameters: ["object_id" : PFUser.currentUser()!.objectId!]) { (returnData: AnyObject?, error: NSError?) -> Void in
+            if (error == nil) {
+                if let data = returnData {
+                    let results = Utilities.convertStringToDictionary(data as! String)
+                    let first_name = results!["first_name"] as! String
+                    let last_name = results!["last_name"] as! String
+                    
+                    self.user_name = first_name + " " + last_name
+                    self.performSegueWithIdentifier("showMain2", sender: self)
+                }
+            } else {
+                print("Customer Error = \(error)")
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "showMain2") {
+            let destVC = segue.destinationViewController as! MainViewController
+            destVC.username = user_name
+        }
     }
     
 }
