@@ -20,7 +20,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var carrotProgressView: CircleProgressView!
     @IBOutlet weak var megaProgressView: CircleProgressView!
     
-    //let user: PFUser = PFUser()
+    var transcationData: Data = Data()
+    var username: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "didRefresh:", forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
+        tableView.allowsSelection = false
+        
+        totalSpentLabel.adjustsFontSizeToFitWidth = true
+        totalSavedLabel.adjustsFontSizeToFitWidth = true
+        usernameLabel.adjustsFontSizeToFitWidth = true
+        
+        usernameLabel.text = username
+        
+        refreshData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,16 +51,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return transcationData.descriptions.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("transactionCell", forIndexPath: indexPath) as! TransactionTableViewCell
         
+        let index = indexPath.row
+        
+        cell.descripLabel.text = self.transcationData.descriptions[index]
+        cell.priceLabel.text = "$\(Utilities.getCurrencyValue(self.transcationData.amounts[index]))"
+        cell.savedLabel.text = "+$\(Utilities.getCurrencyValue(self.transcationData.change[index]))"
+        
+        
         return cell
     }
     
+    
+    
     func didRefresh(refreshControl: UIRefreshControl) {
+        refreshData()
         refreshControl.endRefreshing()
     }
     
@@ -63,34 +83,103 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         dateSegment.setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
     }
     
-    // MARK: - Network
+    // MARK: - Progress View
     
-    func getData() {
-        //let query = PFUser.query()
-        PFCloud.callFunctionInBackground("getPurchasesForAccount", withParameters: ["account_id" : PFUser.currentUser()!["account_id"]]) { (result: AnyObject?, error: NSError?) -> Void in
-            if (error == nil) {
-                print("RESULTS = \(result)")
-            } else {
-                print("error = \(error)")
-            }
-        }
+    private func getPercentage(amount: Double, total: Double) {
         
-//        PFCloud.callFunctionInBackground("getPurchasesForAccount", withParameters: ["account_id":PFUser.currentUser()!["account_id"]]) { (result: AnyObject, error: NSError) -> Void in
-//            if (error == nil) {
-//                
-//            } else {
-//                print("purchase network error = \(error)")
-//            }
-//        }
     }
     
+    // MARK: - Network
     
+    private func refreshData() {
+        getTransactionData()
+        getTotalsData()
+    }
     
+    func getTransactionData() {
+        PFCloud.callFunctionInBackground("getPurchasesForUser", withParameters: ["object_id" : PFUser.currentUser()!.objectId!]) { (returnData: AnyObject?, error: NSError?) -> Void in
+            if (error == nil) {
+                if let data = returnData {
+                    let results = Utilities.convertStringtoJSON(data as! String)
+                    self.transcationData = Data()
+                    for result: Dictionary<String, AnyObject> in results! {
+                        let purchase = result["amount"] as! Double
+                        let change = result["change"] as! Double
+                        var description = result["description"] as! String
+                        description = description.capitalizedString
+                        let date = result["purchase_date"] as! String
+                        print(self.getDayString(date))
+                        
+                        
+                        self.transcationData.amounts.append(purchase)
+                        self.transcationData.change.append(change)
+                        self.transcationData.descriptions.append(description)
+                        self.transcationData.dates.append(date)
+                    }
+                    
+                    self.tableView.reloadData()
+                }
+            } else {
+                print("Transactions Error = \(error)")
+            }
+        }
+    }
     
+    func getTotalsData() {
+        PFCloud.callFunctionInBackground("getTotalSpendingChange", withParameters: ["object_id" : PFUser.currentUser()!.objectId!]) { (returnData: AnyObject?, error: NSError?) -> Void in
+            if (error == nil) {
+                if let data = returnData {
+                    let results = Utilities.convertStringToDictionary(data as! String)
+                    let spent = results!["total_spending"] as! Double
+                    let saved = results!["total_change"] as! Double
+                    
+                    self.totalSpentLabel.text = "$\(Utilities.getCurrencyValue(spent))"
+                    self.totalSavedLabel.text = "$\(Utilities.getCurrencyValue(saved))"
+                    
+                    let percentage = saved/100
+                    self.carrotProgressView.setProgress(percentage, animated: true)
+                    self.megaProgressView.setProgress(percentage, animated: true)
+                }
+            } else {
+                print("Totals Error = \(error)")
+            }
+        }
+    }
+
     
+    // MARK: - Time
     
+    func getDayString(time: String) -> String {
+        
+        // time format is "2016-01-08"
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-mm-dd"
+        let createdDate = dateFormatter.dateFromString(time)
+        
+        let today = NSDate(timeIntervalSinceNow: 0)
+        let timeOffset = today.offsetFrom(createdDate!)
+        return timeOffset
+    }
     
+    func getMonthString(time: String) -> String {
+        
+        // time format is "Sat Dec 26 21:11:35 +0000 2015"
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
+        let createdDate = dateFormatter.dateFromString(time)
+        
+        let today = NSDate(timeIntervalSinceNow: 0)
+        let timeOffset = today.offsetFrom(createdDate!)
+        return timeOffset
+    }
     
-    
-    
+}
+
+    // MARK: - Data
+
+struct Data {
+    var amounts: [Double] = []
+    var change: [Double] = []
+    var dates: [String] = []
+    var descriptions: [String] = []
 }
