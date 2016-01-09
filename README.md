@@ -1,5 +1,5 @@
 #Carrot
-Carrot is an iOS app to automatically save money and invest in things you love the most. 
+Carrot is an iOS app to automatically save your spare change and invest it in things you love the most. 
 
 Developed at the 2016 Capital One Summit for Software Engineers Hackathon.
 
