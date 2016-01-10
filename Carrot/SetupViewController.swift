@@ -36,13 +36,7 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         PFUser.currentUser()!.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
-                print("success posting account and customer id")
-                
-                
                 let currentUserID = PFUser.currentUser()?.objectId!
-                print("Objectid: \(currentUserID)")
-                
-                
                 PFCloud.callFunctionInBackground("processPurchases", withParameters: ["object_id" : currentUserID!]) { (returnData: AnyObject?, error: NSError?) -> Void in
                     if (error == nil) {
                         if let data = returnData {
@@ -65,18 +59,11 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         print("Totals Error = \(error)")
                     }
                 }
-                
-                
-                
-                
-                
             } else {
                 print("failed posting account and customer id")
             }
         }
-        
-        
-            }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -118,30 +105,22 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         priceSlider.minimumValue = 0.0
         priceSlider.value = Float(items.price[tag])
         
-        currentPrice.text = "$\(Utilities.getCurrencyValue(items.price[tag]))"
-        maxPrice.text = "$\(Utilities.getCurrencyValue(items.price[tag] * 2))" // double the price
+        let price = items.price[tag]
+        currentPrice.text = "$\(Utilities.getCurrencyValue(price))"
+        maxPrice.text = "$\(Utilities.getCurrencyValue(price * 2))"
         
     }
     
-//    @IBAction func sliderValueChanged(sender: UISlider) {
-//        let currentValue = Int(sender.value)
-//        currentPrice.text = "\(currentValue)"
-//        
-//        let indexPath = NSIndexPath(forRow: tag, inSection: 1)
-//        let cell = tableView.cellForRowAtIndexPath(indexPath) as! topThreeTableViewCell
-//        cell.priceLabel.text = "$\(currentValue)"
-//        
-//        print(currentValue)
-//    }
     @IBAction func changeValue(sender: UISlider) {
-                let currentValue = sender.value
-                currentPrice.text = "\(currentValue)"
+            let currencyValue = "$\(Utilities.getCurrencyValue(Double(sender.value)))"
+            currentPrice.text = currencyValue
         
-                //let indexPath = NSIndexPath(forRow: tag, inSection: 1)
-                //let cell = tableView.cellForRowAtIndexPath(indexPath) as! topThreeTableViewCell
-                //cell.priceLabel.text = "$\(currentValue)"
-                
-                print(currentValue)
+        
+        
+            //items.price[tag] = Double(currencyValue)!
+            //let indexPath = NSIndexPath(forRow: tag, inSection: 1)
+            //let cell = tableView.cellForRowAtIndexPath(indexPath) as! topThreeTableViewCell
+            //cell.priceLabel.text = "$\(currentValue)"
     }
 
     @IBAction func seeProfilePushed(sender: UIButton) {
