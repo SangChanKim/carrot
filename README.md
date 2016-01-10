@@ -26,5 +26,5 @@ We round up every transaction you make and invest the spare change into your own
 * `Parse.setApplicationId("<insert application id here>", clientKey: "<insert client key here>")`
 
 ##Presentation 
-[Google Slide](https://docs.google.com/presentation/d/1Q6uJYYkDGKc0allsuwSXiLVXeCoRFXU_G_LaQtDejzE/edit)
+[Google Slides presentation](https://docs.google.com/presentation/d/1Q6uJYYkDGKc0allsuwSXiLVXeCoRFXU_G_LaQtDejzE/edit)
 
