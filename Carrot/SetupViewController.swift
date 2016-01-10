@@ -114,9 +114,6 @@ class SetupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func changeValue(sender: UISlider) {
             let currencyValue = "$\(Utilities.getCurrencyValue(Double(sender.value)))"
             currentPrice.text = currencyValue
-        
-        
-        
             //items.price[tag] = Double(currencyValue)!
             //let indexPath = NSIndexPath(forRow: tag, inSection: 1)
             //let cell = tableView.cellForRowAtIndexPath(indexPath) as! topThreeTableViewCell
